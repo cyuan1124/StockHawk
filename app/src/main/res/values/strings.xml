@@ -1,13 +1,29 @@
 <resources>
-  <string name="app_name">Stock Hawk</string>
+    <string name="app_name">Stock Hawk</string>
+    <string name="content_authority">com.sam_chordas.android.stockhawk.data.QuoteProvider</string>
+    <string name="sync_account_type">stockhawk.android.sam_chordas.com</string>
+    <string name="action_example">Example action</string>
 
-  <string name="action_example">Example action</string>
+    <string name="pref_stock_status_key" translatable="false">stock-status</string>
 
-  <string name="action_settings">Settings</string>
-  <string name="action_change_units">Change Units</string>
-  <string name="symbol_search">Symbol Search</string>
-  <string name="content_test">Search for a Stock Symbol</string>
-  <string name="input_hint">FB</string>
-  <string name="input_prefill"></string>
-  <string name="network_toast">Uh-oh! This app requires an internet connection</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_change_units">Change Units</string>
+    <string name="symbol_search">Symbol Search</string>
+    <string name="content_test">Search for a Stock Symbol</string>
+    <string name="input_hint">FB</string>
+    <string name="input_prefill"></string>
+    <string name="network_toast">Uh-oh! This app requires an internet connection</string>
+
+    <string name="empty_message_init">Initializing...</string>
+    <string name="empty_message_no_symbol">Use floating button to add symbol</string>
+    <string name="error_message_server_down">Server error, please try later</string>
+    <string name="message_invalid_stock">Invalid stock symbol</string>
+    <string name="error_message_no_internet">Network error, please check your network configuration</string>
+
+    <string name="action_add_fab">Add a new symbol</string>
+
+    <string name="quote_duration_week">1 Week</string>
+    <string name="quote_duration_month">1 Month</string>
+    <string name="quote_duration_3_month">3 Month</string>
+    <string name="quote_duration_year">1 Year</string>
 </resources>
