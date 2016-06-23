@@ -22,6 +22,6 @@
     android:minResizeWidth="@dimen/widget_detail_min_resize_width"
     android:minWidth="@dimen/widget_detail_default_width"
     android:resizeMode="horizontal|vertical"
-    android:updatePeriodMillis="0"
+    android:updatePeriodMillis="3600000"
     android:widgetCategory="home_screen|keyguard"
     tools:ignore="UnusedAttribute" />

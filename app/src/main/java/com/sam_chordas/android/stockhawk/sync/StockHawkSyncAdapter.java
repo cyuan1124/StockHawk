@@ -42,7 +42,7 @@ import java.util.ArrayList;
 public class StockHawkSyncAdapter extends AbstractThreadedSyncAdapter {
     public final String LOG_TAG = "StockHawk.SyncAdapter";
     public static final String ACTION_DATA_UPDATED =
-            "com.sam)chordas.android.stockhawk.ACTION_DATA_UPDATED";
+            "com.sam_chordas.android.stockhawk.ACTION_DATA_UPDATED";
 
     private OkHttpClient client = new OkHttpClient();
     private boolean isUpdate;
