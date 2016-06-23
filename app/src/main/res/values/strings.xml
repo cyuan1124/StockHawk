@@ -12,6 +12,9 @@
     <string name="input_prefill"></string>
     <string name="network_toast">Uh-oh! This app requires an internet connection</string>
 
+    <string name="toast_invalid_code">Invalid stock code</string>
+    <string name="toast_added_code">This stock is already saved!</string>
+
     <string name="empty_message_init">Initializing...</string>
     <string name="empty_message_no_symbol">Use floating button to add symbol</string>
     <string name="error_message_server_down">Server error, please try later</string>

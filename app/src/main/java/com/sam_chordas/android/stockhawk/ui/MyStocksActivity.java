@@ -1,8 +1,6 @@
 package com.sam_chordas.android.stockhawk.ui;
 
 import android.app.LoaderManager;
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
@@ -113,10 +111,10 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                                             new String[]{QuoteColumns.SYMBOL}, QuoteColumns.SYMBOL + "= ?",
                                             new String[]{input.toString()}, null);
                                     if (c.getCount() != 0) {
-                                        toast("This stock is already saved!");
+                                        toast(R.string.toast_added_code);
                                     } else {
                                         if (!input.toString().matches(STOCK_CODE_PATTERN)) {
-                                            toast("Invalid stock code!");
+                                            toast(R.string.toast_invalid_code);
                                             return;
                                         }
                                         // Add the stock to DB
@@ -150,9 +148,9 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
         }
     }
 
-    private void toast(String message) {
+    private void toast(int msgId) {
         Toast toast =
-                Toast.makeText(MyStocksActivity.this, message,
+                Toast.makeText(MyStocksActivity.this, msgId,
                         Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, Gravity.CENTER, 0);
         toast.show();
@@ -261,7 +259,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                 msgId = R.string.error_message_no_internet;
                 break;
             case Utils.STOCK_STATUS_INVALID:
-                toast(getString(R.string.message_invalid_stock));
+                toast(R.string.message_invalid_stock);
                 msgId = R.string.empty_message_no_symbol;
                 break;
         }
