@@ -19,11 +19,13 @@
     <string name="error_message_server_down">Server error, please try later</string>
     <string name="message_invalid_stock">Invalid stock symbol</string>
     <string name="error_message_no_internet">Network error, please check your network configuration</string>
-
+    <string name="empty_message_widget">Empty list</string>
     <string name="action_add_fab">Add a new symbol</string>
 
     <string name="quote_duration_week">1 Week</string>
     <string name="quote_duration_month">1 Month</string>
     <string name="quote_duration_3_month">3 Month</string>
     <string name="quote_duration_year">1 Year</string>
+
+    <string name="title_widget_detail">Stock Detail</string>
 </resources>

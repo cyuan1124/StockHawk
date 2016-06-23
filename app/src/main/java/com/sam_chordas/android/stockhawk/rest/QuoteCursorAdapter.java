@@ -1,6 +1,9 @@
 package com.sam_chordas.android.stockhawk.rest;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -14,8 +17,10 @@ import android.widget.TextView;
 import com.sam_chordas.android.stockhawk.R;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
+import com.sam_chordas.android.stockhawk.sync.StockHawkSyncAdapter;
 import com.sam_chordas.android.stockhawk.touch_helper.ItemTouchHelperAdapter;
 import com.sam_chordas.android.stockhawk.touch_helper.ItemTouchHelperViewHolder;
+import com.sam_chordas.android.stockhawk.widget.DetailWidgetProvider;
 
 /**
  * Created by sam_chordas on 10/6/15.
@@ -88,6 +93,13 @@ public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAda
         String symbol = c.getString(c.getColumnIndex(QuoteColumns.SYMBOL));
         mContext.getContentResolver().delete(QuoteProvider.Quotes.withSymbol(symbol), null, null);
         notifyItemRemoved(position);
+        //Notify widget to update
+        Intent intent = new Intent(mContext, DetailWidgetProvider.class);
+        intent.setAction(StockHawkSyncAdapter.ACTION_DATA_UPDATED);
+        int ids[] = AppWidgetManager.getInstance(mContext)
+                .getAppWidgetIds(new ComponentName(mContext.getApplicationContext(), DetailWidgetProvider.class));
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+        mContext.sendBroadcast(intent);
     }
 
     @Override

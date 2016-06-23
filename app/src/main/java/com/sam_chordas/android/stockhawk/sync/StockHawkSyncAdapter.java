@@ -2,12 +2,15 @@ package com.sam_chordas.android.stockhawk.sync;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.appwidget.AppWidgetManager;
 import android.content.AbstractThreadedSyncAdapter;
+import android.content.ComponentName;
 import android.content.ContentProviderClient;
 import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.content.SyncRequest;
 import android.content.SyncResult;
@@ -24,6 +27,7 @@ import com.sam_chordas.android.stockhawk.R;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
 import com.sam_chordas.android.stockhawk.rest.Utils;
+import com.sam_chordas.android.stockhawk.widget.DetailWidgetProvider;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -38,7 +42,7 @@ import java.util.ArrayList;
 public class StockHawkSyncAdapter extends AbstractThreadedSyncAdapter {
     public final String LOG_TAG = "StockHawk.SyncAdapter";
     public static final String ACTION_DATA_UPDATED =
-            "com.example.android.sunshine.app.ACTION_DATA_UPDATED";
+            "com.sam)chordas.android.stockhawk.ACTION_DATA_UPDATED";
 
     private OkHttpClient client = new OkHttpClient();
     private boolean isUpdate;
@@ -121,7 +125,6 @@ public class StockHawkSyncAdapter extends AbstractThreadedSyncAdapter {
 
         String urlString;
         String getResponse;
-        int result = GcmNetworkManager.RESULT_FAILURE;
         if (urlStringBuilder != null) {
             if (!Utils.checkNetwork(getContext())) {
                 Utils.setStockStatus(getContext(), Utils.NO_INTERNET);
@@ -130,7 +133,6 @@ public class StockHawkSyncAdapter extends AbstractThreadedSyncAdapter {
             urlString = urlStringBuilder.toString();
             try {
                 getResponse = fetchData(urlString);
-                result = GcmNetworkManager.RESULT_SUCCESS;
                 try {
                     ContentValues contentValues = new ContentValues();
                     // update ISCURRENT to 0 (false) so new data is current
@@ -154,7 +156,12 @@ public class StockHawkSyncAdapter extends AbstractThreadedSyncAdapter {
                 Utils.setStockStatus(getContext(), Utils.STOCK_STATUS_SERVER_DOWN);
             }
         }
-        //TODO notify data change
+        Intent intent = new Intent(getContext(), DetailWidgetProvider.class);
+        intent.setAction(StockHawkSyncAdapter.ACTION_DATA_UPDATED);
+        int ids[] = AppWidgetManager.getInstance(getContext())
+                .getAppWidgetIds(new ComponentName(getContext().getApplicationContext(), DetailWidgetProvider.class));
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+        getContext().sendBroadcast(intent);
     }
 
     /**
