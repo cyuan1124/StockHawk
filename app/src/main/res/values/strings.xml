@@ -1,12 +1,10 @@
 <resources>
     <string name="app_name">Stock Hawk</string>
-    <string name="content_authority">com.sam_chordas.android.stockhawk.data.QuoteProvider</string>
-    <string name="sync_account_type">stockhawk.android.sam_chordas.com</string>
-    <string name="action_example">Example action</string>
+    <string name="content_authority" translatable="false">com.sam_chordas.android.stockhawk.data.QuoteProvider</string>
+    <string name="sync_account_type" translatable="false">stockhawk.android.sam_chordas.com</string>
 
     <string name="pref_stock_status_key" translatable="false">stock-status</string>
 
-    <string name="action_settings">Settings</string>
     <string name="action_change_units">Change Units</string>
     <string name="symbol_search">Symbol Search</string>
     <string name="content_test">Search for a Stock Symbol</string>
@@ -28,4 +26,20 @@
     <string name="quote_duration_year">1 Year</string>
 
     <string name="title_widget_detail">Stock Detail</string>
+
+    <string name="duration_fab_week">Stock data over one week</string>
+    <string name="duration_fab_month">Stock data over one month</string>
+    <string name="duration_fab_3_month">Stock data over three months</string>
+    <string name="duration_fab_year">Stock data over one year</string>
+
+    <string name="content_description_open">open price at %1$s</string>
+    <string name="content_description_close">close price at %1$s</string>
+    <string name="content_description_high">highest price at %1$s</string>
+    <string name="content_description_low">lowest price at %1$s</string>
+
+    <string name="detail_open">Open</string>
+    <string name="detail_close">Close</string>
+    <string name="detail_high">High</string>
+    <string name="detail_low">Low</string>
+
 </resources>

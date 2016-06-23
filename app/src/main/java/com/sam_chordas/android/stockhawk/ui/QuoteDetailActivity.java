@@ -95,6 +95,11 @@ public class QuoteDetailActivity extends AppCompatActivity implements TabLayout.
         tabLayout.addTab(tabLayout.newTab().setText(R.string.quote_duration_year));
         tabLayout.setOnTabSelectedListener(this);
 
+        tabLayout.getTabAt(WEEK).setContentDescription(R.string.duration_fab_week);
+        tabLayout.getTabAt(MONTH).setContentDescription(R.string.duration_fab_month);
+        tabLayout.getTabAt(THREE_MONTHS).setContentDescription(R.string.duration_fab_3_month);
+        tabLayout.getTabAt(YEAR).setContentDescription(R.string.duration_fab_year);
+
         chart.setBorderColor(Color.WHITE);
         chart.setDrawBorders(true);
         chart.setDrawGridBackground(false);
@@ -251,6 +256,10 @@ public class QuoteDetailActivity extends AppCompatActivity implements TabLayout.
         setPrice(close, quote.getClose());
         setPrice(high, quote.getHigh());
         setPrice(low, quote.getLow());
+        open.setContentDescription(getString(R.string.content_description_open, quote.getDate()));
+        close.setContentDescription(getString(R.string.content_description_close, quote.getDate()));
+        high.setContentDescription(getString(R.string.content_description_high, quote.getDate()));
+        low.setContentDescription(getString(R.string.content_description_low, quote.getDate()));
     }
 
     private void setPrice(TextView textView, Double value) {
